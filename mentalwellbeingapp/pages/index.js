@@ -1,8 +1,13 @@
-import SingIn from "./singIn";
-
+import Footer from "../components/footer";
+import Homepage from "../components/homepage";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (
-    <SingIn/>
+    <div>
+    <Navbar/>
+    <Homepage/>
+    {/* <Footer/> */}
+    </div>
   )
 }
