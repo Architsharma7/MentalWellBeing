@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/homepage.module.css";
+import { useState } from "react";
 
 const Homepage = () => {
   const cards = [
@@ -19,6 +20,37 @@ const Homepage = () => {
       desc: "",
     },
   ];
+
+  const [userInput, setUserInput] = useState("");
+
+  const [apiOutput, setApiOutput] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const callGenerateEndpoint = async () => {
+    setIsGenerating(true);
+
+    console.log("Calling OpenAI...");
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userInput }),
+    });
+
+    const data = await response.json();
+    const { output } = data;
+    console.log("OpenAI replied...", output.text);
+
+    setApiOutput(`${output.text}`);
+    setIsGenerating(false);
+  };
+
+  const onUserChangedText = (event) => {
+    console.log(event.target.value);
+    setUserInput(event.target.value);
+  };
+
   return (
     <div className="bg-violet-200 flex flex-col">
       <div className="mb-20">
@@ -104,10 +136,23 @@ const Homepage = () => {
                 natus, dolore deserunt repudiandae neque quas. Esse repellendus
                 neque voluptatibus ratione! Sint, deleniti itaque.
               </p>
-              <input type="search" className="px-4 py-2 mt-10" />
-              <button className="mt-4 bg-blue-500 w-1/4 justify-center px-6 py-2 rounded-2xl text-center">
-                Search
-              </button>
+              <input
+                type="search"
+                className="px-4 py-2 mt-10"
+                value={userInput}
+                onChange={onUserChangedText}
+              />
+                <button
+                  className="mt-4 bg-blue-500 w-1/4 justify-center px-6 py-2 rounded-2xl text-center text-white"
+                  onClick={callGenerateEndpoint}
+                >
+                {isGenerating ? "loading..." : "search"}
+                </button>
+              {apiOutput && (
+                <div className="mt-6 text-white justify-center">
+                  <p className="text-md">{apiOutput}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
