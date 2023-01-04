@@ -17,13 +17,13 @@ const SingIn = () => {
 
   const LogIn = () => {
     signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() =>
-      router.push("/understand")
+      router.push("/quiz")
     ).catch((err) => alert(err.message));
   };
 
   const LoginWithGoogle = () => {
     signInWithPopup(auth, googleProvider).then(() => 
-      router.push("/understand")
+      router.push("/quiz")
     ).catch((err) => alert(err.message));
   };
 

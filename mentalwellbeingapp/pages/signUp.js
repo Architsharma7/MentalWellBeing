@@ -16,7 +16,7 @@ const SignUp = () => {
   const signUp = () => {
     if(password === confirmPassword){
     createUserWithEmailAndPassword(auth, email, password).then(() =>
-      router.push("/understand")
+      router.push("/quiz")
     ).catch((err) => alert(err.message));
     }else{
       alert("Passwords don't match");
