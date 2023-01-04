@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useRouter } from "next/router";
+import {app} from "../firebase/firebaseConfig";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SingIn = () => {
+
+  const auth = getAuth();
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const router = useRouter();
+
+  const [loginEmail, setLoginEmail] = useState(" ");
+  const [loginPassword, setLoginPassword] = useState(" ");
+
+  const LogIn = () => {
+    signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() =>
+      router.push("/understand")
+    ).catch((err) => alert(err.message));
+  };
+
+  const LoginWithGoogle = () => {
+    signInWithPopup(auth, googleProvider).then(() => 
+      router.push("/understand")
+    ).catch((err) => alert(err.message));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center my-auto h-screen md:bg-bgSquare lg:bg-bgSquare">
       <div className="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10">
@@ -19,6 +45,7 @@ const SingIn = () => {
         </p>
         <button
           className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
+          onClick={LoginWithGoogle}
         >
           <svg
             width={19}
@@ -62,6 +89,8 @@ const SingIn = () => {
           <input
             type="email"
             className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+            value={loginEmail}
+            onChange = {(event) => setLoginEmail(event.target.value)}
           />
         </div>
         <div className="mt-6  w-full">
@@ -72,12 +101,15 @@ const SingIn = () => {
             <input
               type="password"
               className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+              value={loginPassword}
+              onChange = {(event) => setLoginPassword(event.target.value)}
             />
           </div>
         </div>
         <div className="mt-8">
           <button
             className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full"
+            onClick={LogIn}
           >
             Login
           </button>
