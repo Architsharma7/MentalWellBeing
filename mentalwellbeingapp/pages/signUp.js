@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/router";
-import {app} from "../firebase/firebase-config";
+import {app} from "../firebase/firebaseConfig";
 
 const SignUp = () => {
 

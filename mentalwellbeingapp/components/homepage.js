@@ -1,13 +1,16 @@
 import React from "react";
 import "../styles/homepage.module.css";
 import { useState } from "react";
+import { useAuth } from "../context/authContext";
 
 const Homepage = () => {
+
+  const {currentUser} = useAuth();
   const cards = [
     {
       img: "",
-      title: "hello",
-      desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus laboriosam velit itaque molestiae, distinctio odit adipisci aspernatur dolorem. Sit id dolorum ratione nulla tempora ea nam exercitationem alias repudiandae beatae?",
+      title: `hello ${currentUser}`,
+      desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus laboriosam velit itaque molestiae, distinctio odit adipisci aspernatur dolorem. Sit id dolorum ratione nulla tempora ea nam exercitationem alias repudiandae beatae?`,
     },
     {
       img: "",
@@ -51,6 +54,7 @@ const Homepage = () => {
     setUserInput(event.target.value);
   };
 
+
   return (
     <div className="bg-violet-200 flex flex-col">
       <div className="mb-20">
@@ -61,7 +65,7 @@ const Homepage = () => {
               hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
               odit voluptatum, eveniet minus sed dolorem corrupti deleniti unde
               enim, repellendus architecto quaerat hic reiciendis, quis nihil
-              molestiae! Similique, incidunt consectetur?
+              molestiae! Similique, incidunt consectetur? 
             </p>
           </div>
           <div className="md:w-1/2 lg:w-/2 xl:w-1/2 md:float-right lg:float-right xl:float-right md:justify-end lg:justify-end xl:justify-end md:mx-10 lg:mx-10 xl:mx-10 hidden">
@@ -87,7 +91,7 @@ const Homepage = () => {
                       src={items.img}
                     />
                     <div className="p-4">
-                      <h4 className="text-3xl font font-semibold text-white font-Roboto leading-normal tracking-normal">
+                      <h4 className="text-3xl font font-semibold text-black font-Roboto leading-normal tracking-normal">
                         {items.title}
                       </h4>
                       <p className="mb-2 mt-3 text-gray-400 tracking-wide leading-normal font-semibold text-md">
