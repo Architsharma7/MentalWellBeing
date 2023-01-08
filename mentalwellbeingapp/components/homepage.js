@@ -2,10 +2,10 @@ import React from "react";
 import "../styles/homepage.module.css";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
+import Wave from "react-wavify";
 
 const Homepage = () => {
-
-  const {currentUser} = useAuth();
+  const { currentUser } = useAuth();
   const cards = [
     {
       img: "",
@@ -54,7 +54,6 @@ const Homepage = () => {
     setUserInput(event.target.value);
   };
 
-
   return (
     <div className="bg-violet-200 flex flex-col">
       <div className="mb-20">
@@ -65,7 +64,7 @@ const Homepage = () => {
               hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
               odit voluptatum, eveniet minus sed dolorem corrupti deleniti unde
               enim, repellendus architecto quaerat hic reiciendis, quis nihil
-              molestiae! Similique, incidunt consectetur? 
+              molestiae! Similique, incidunt consectetur?
             </p>
           </div>
           <div className="md:w-1/2 lg:w-/2 xl:w-1/2 md:float-right lg:float-right xl:float-right md:justify-end lg:justify-end xl:justify-end md:mx-10 lg:mx-10 xl:mx-10 hidden">
@@ -73,11 +72,38 @@ const Homepage = () => {
           </div>
           {/* <div className='absolute w-full h-56 bottom-0' id='curve'></div> */}
         </div>
+        {/* <div className="rotate-180 -mt-12">
+          <Wave
+            fill="#5c6bc0"
+            paused={true}
+            options={{
+              height: 30,
+              amplitude: 40,
+              speed: 0.15,
+              points: 4,
+            }}
+          />
+          <Wave
+            fill="#536dfe"
+            paused={true}
+            options={{
+              height: 30,
+              amplitude: 40,
+              speed: 0.15,
+              points: 4,
+            }}
+            className= "-mt-16"
+          />
+        </div>
+        <div className="rotate-180 -mt-12">
+        
+        </div> */}
+
         {/* heading and desc ends here */}
         {/* About section starts here */}
         <div>
           <p className="text-sm flex justify-center mt-10">About</p>
-          <div className=" mt-20">
+          <div className="mt-20">
             <div className="grid gap-x-6 gap-y-10 w-4/5 mx-auto grid-rows-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
               {cards.map((items, key) => {
                 return (
@@ -147,12 +173,12 @@ const Homepage = () => {
                 onChange={onUserChangedText}
               />
               <div className="flex justify-center">
-              <button
-                className="mt-4 bg-blue-500 flex justify-center px-12 py-2 rounded-2xl text-white w-20"
-                onClick={callGenerateEndpoint}
-              >
-                {isGenerating ? "Loading..." : "Search"}
-              </button>
+                <button
+                  className="mt-4 bg-blue-500 flex justify-center px-12 py-2 rounded-2xl text-white w-20"
+                  onClick={callGenerateEndpoint}
+                >
+                  {isGenerating ? "Loading..." : "Search"}
+                </button>
               </div>
               {apiOutput && (
                 <div className="mt-6 text-white justify-center">

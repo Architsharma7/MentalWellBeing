@@ -37,7 +37,7 @@ const Navbar = () => {
           <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg lg:bg-violet-200 xl:bg-violet-200 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-violet-200 bg-white">
             <li>
               <a
-                href="#"
+                href="/blog"
                 className="block py-2 pl-3 pr-4 text-black rounded md:hover:text-blue-700 md:p-0 text-center border-b md:border-b-0"
                 aria-current="page"
               >
@@ -46,7 +46,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/chat"
                 className="block py-2 pl-3 pr-4 text-black rounded md:hover:text-blue-700 md:p-0 text-center border-b md:border-b-0"
               >
                 Chat
@@ -54,7 +54,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/quiz"
                 className="block py-2 pl-3 pr-4 text-black rounded md:hover:text-blue-700 md:p-0 text-center"
               >
                 Quiz
