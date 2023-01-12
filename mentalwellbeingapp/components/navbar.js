@@ -1,36 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Navbar = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <nav className=" bg-violet-200 px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0 border-b border-gray-200">
+    <nav className=" bg-violet-200 px-2 sm:px-4 py-4 w-full z-20 top-0 left-0 border-b border-gray-200 rounded-md">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="/" className="flex items-center">
+        <a href="/" className="flex items-center ml-2 md:ml-0">
           <span className="self-center text-xl font-semibold whitespace-nowrap">
             Mentalwellbeing
           </span>
         </a>
         <div className="flex md:order-2">
-          <button
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button>
+        <button className="text-white bg-blue-500 hover:bg-white hover:text-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 text-center mr-2 md:mr-0 hover:scale-110 transform transition duration-300">
+          <a href="/signIn"><span className="mx-4">Log In</span></a>
+        </button>
         </div> 
-        <div
+        {/* <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-sticky"
         >
@@ -61,7 +46,7 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

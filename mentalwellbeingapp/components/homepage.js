@@ -108,7 +108,7 @@ const Homepage = () => {
               {cards.map((items, key) => {
                 return (
                   <div
-                    className="w-full rounded-lg shadow-md bg-white"
+                    className="w-full rounded-lg shadow-md bg-white hover:scale-105 transform transition duration-300"
                     key={key}
                   >
                     <img

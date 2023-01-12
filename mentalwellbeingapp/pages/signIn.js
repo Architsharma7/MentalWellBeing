@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import {app} from "../firebase/firebaseConfig";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useAuth } from "../context/authContext";
 
 const SingIn = () => {
 
@@ -12,13 +13,12 @@ const SingIn = () => {
 
   const router = useRouter();
 
-  const [loginEmail, setLoginEmail] = useState(" ");
-  const [loginPassword, setLoginPassword] = useState(" ");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
-  const LogIn = () => {
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() =>
-      router.push("/quiz")
-    ).catch((err) => alert(err.message));
+  const LogIn = async() => {
+    const result = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    console.log(result.user);
   };
 
   const LoginWithGoogle = () => {

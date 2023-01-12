@@ -1,27 +1,19 @@
 import React, {useState} from 'react'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "next/router";
 import {app} from "../firebase/firebaseConfig";
+import { useAuth } from '../context/authContext';
 
 const SignUp = () => {
 
-  const auth = getAuth();
-
-  const router = useRouter();
+  const {signUp} = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const signUp = () => {
-    if(password === confirmPassword){
-    createUserWithEmailAndPassword(auth, email, password).then(() =>
-      router.push("/quiz")
-    ).catch((err) => alert(err.message));
-    }else{
-      alert("Passwords don't match");
-    }
-  };
+  async function handleClick () {
+    await signUp(email,password,confirmPassword);
+  }
+
 
   return (
     <div className="flex flex-col items-center justify-center my-auto h-screen md:bg-bgSquare lg:bg-bgSquare bg-no-repeat bg-cover bg-center bg-fixed">
@@ -72,13 +64,14 @@ const SignUp = () => {
               type="password"
               className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               onChange={(event) => setConfirmPassword(event.target.value)}
+              value={confirmPassword}
             />
           </div>
         </div>
         <div className="mt-8">
           <button
             className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full"
-            onClick={signUp}
+            onClick={handleClick}
           >
             Create my account
           </button>

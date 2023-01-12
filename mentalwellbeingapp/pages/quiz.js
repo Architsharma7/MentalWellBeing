@@ -1,37 +1,49 @@
 import React from "react";
 import styles from "../styles/homepage.module.css";
-import Wave from 'react-wavify'
+import Wave from "react-wavify";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/router";
+import { auth } from "../firebase/firebaseConfig";
+import { useAuth } from "../context/authContext";
 
 const quiz = () => {
 
-  const classes = `${styles.spacer}, ${styles.layer}`
+  const {SignOutUser} = useAuth();
+
+  const handleClick = () => {
+    SignOutUser();
+  }
+
+  const classes = `${styles.spacer}, ${styles.layer}`;
   return (
     <div className="">
       <div className="bg-indigo-500">
-     <div>
-      <p>hello</p>
-     </div>
-     <div>
-      <p>hello</p>
-      <Wave fill='#f79902'
-        paused={false}
-        options={{
-          height: 10,
-          amplitude: 50,
-          speed: 0.15,
-          points: 7
-        }}
-  />
-     </div>
-     <div>
-      <p>hello</p>
-      <div className={classes}></div>
-     </div>
-     <div>
-      <p>hello</p>
-     </div>
-     </div>
-     
+        <div>
+          <p>hello</p>
+        </div>
+        <div>
+          <p>hello</p>
+          <Wave
+            fill="#f79902"
+            paused={false}
+            options={{
+              height: 10,
+              amplitude: 50,
+              speed: 0.15,
+              points: 7,
+            }}
+          />
+        </div>
+        <div>
+          <div>
+            <button onClick={handleClick}>sign out</button>
+          </div>
+          <div className={classes}></div>
+        </div>
+        <div>
+          <p>hello</p>
+        </div>
+      </div>
     </div>
   );
 };
