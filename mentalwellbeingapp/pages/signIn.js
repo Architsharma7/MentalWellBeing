@@ -28,7 +28,7 @@ const SingIn = () => {
           Login to your account
         </p>
         <p className="text-sm mt-4 font-medium leading-none text-gray-500">
-          Dont have account?
+          Dont have account? {" "}
           <span
             className="text-sm font-medium leading-none underline text-gray-800 cursor-pointer"
           >
@@ -75,9 +75,9 @@ const SingIn = () => {
           <hr className="w-full bg-gray-400" />
         </div>
         <div>
-          <lable className="text-sm font-medium leading-none text-gray-800">
+          <label className="text-sm font-medium leading-none text-gray-800">
             Email
-          </lable>
+          </label>
           <input
             type="email"
             className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
@@ -86,9 +86,9 @@ const SingIn = () => {
           />
         </div>
         <div className="mt-6  w-full">
-          <lable className="text-sm font-medium leading-none text-gray-800">
+          <label className="text-sm font-medium leading-none text-gray-800">
             Password
-          </lable>
+          </label>
           <div className="relative flex items-center justify-center">
             <input
               type="password"

@@ -10,7 +10,7 @@ const Homepage = () => {
   const cards = [
     {
       img: "",
-      title: `hello ${currentUser}`,
+      title: `hello`,
       desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus laboriosam velit itaque molestiae, distinctio odit adipisci aspernatur dolorem. Sit id dolorum ratione nulla tempora ea nam exercitationem alias repudiandae beatae?`,
     },
     {
