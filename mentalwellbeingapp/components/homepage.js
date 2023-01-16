@@ -70,7 +70,7 @@ const Homepage = () => {
     <div className="bg-violet-100 flex flex-col">
       <div className="mb-20">
         {/* heading for the project short description */}
-        <div className="w-screen md:mt-20 lg:mt-24 mt-12 bg-violet-100 flex items-center flex-col">
+        <div className="w-screen md:mt-12 lg:mt-16 mt-10 bg-violet-100 flex items-center flex-col">
           {/* <div className="md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 md:float-left lg:float-left xl:float-left md:justify-start lg:justify-start xl:justify-start justify-center mx-10 mt-10 md:mt-0 lg:mt-0 xl:mt-0 mb-20 md:mb-0 lg:mb-0 xl:mb-0"> */}
           <div className="flex flex-col justify-center align-middle w-screen mx-4">
             <p className="text-black text-4xl md:text-6xl lg:text-6xl xl:text-6xl text-center font-bold leading-relaxed">
@@ -78,6 +78,9 @@ const Homepage = () => {
             </p>
             <p className="text-indigo-600 text-4xl md:text-6xl lg:text-6xl xl:text-6xl text-center font-bold leading-9">
               mental health
+            </p>
+            <p className="text-gray-900 text-2xl text-center font-normal font-sans leading-relaxed md:mx-16 mx-7 mt-8">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eius delectus iure impedit veniam eveniet adipisci quos consequatur vero perferendis
             </p>
           </div>
           <div className="flex align-middle mt-10 w-screen mx-auto justify-center">

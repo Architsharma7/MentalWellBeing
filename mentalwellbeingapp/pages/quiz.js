@@ -1,18 +1,32 @@
 import React from "react";
 import styles from "../styles/homepage.module.css";
 import Wave from "react-wavify";
-import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-import { auth } from "../firebase/firebaseConfig";
-import { useAuth } from "../context/authContext";
+import { useState , useEffect} from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const quiz = () => {
 
-  const {SignOutUser} = useAuth();
+  const auth = getAuth();
+  const [currentUser, setCurrentUser] = useState();
 
-  const handleClick = () => {
-    SignOutUser();
-  }
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
+    });
+  }, [auth]);
+
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
+  const router = useRouter();
 
   const classes = `${styles.spacer}, ${styles.layer}`;
   return (
@@ -36,9 +50,12 @@ const quiz = () => {
         </div>
         <div>
           <div>
-            <button onClick={handleClick}>sign out</button>
+            <button onClick={signOutUser}>sign out</button>
           </div>
           <div className={classes}></div>
+          <div>
+            <button onClick = {() => router.push("/blog")}>blog</button>
+          </div>
         </div>
         <div>
           <p>hello</p>

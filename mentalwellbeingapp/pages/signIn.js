@@ -1,31 +1,23 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import {app} from "../firebase/firebaseConfig";
-import { GoogleAuthProvider } from "firebase/auth";
 import { useAuth } from "../context/authContext";
 
 const SingIn = () => {
-
-  const auth = getAuth();
-
-  const googleProvider = new GoogleAuthProvider();
 
   const router = useRouter();
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const LogIn = async() => {
-    const result = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    console.log(result.user);
-  };
+  const {LogIn, LoginWithGoogle} = useAuth();
 
-  const LoginWithGoogle = () => {
-    signInWithPopup(auth, googleProvider).then(() => 
-      router.push("/quiz")
-    ).catch((err) => alert(err.message));
-  };
+  async function LoginUser(){
+    await LogIn(loginEmail,loginPassword);
+  }
+  async function LoginUserGoogle(){
+    await LoginWithGoogle();
+  }
 
   return (
     <div className="flex flex-col items-center justify-center my-auto h-screen md:bg-bgSquare lg:bg-bgSquare">
@@ -45,7 +37,7 @@ const SingIn = () => {
         </p>
         <button
           className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
-          onClick={LoginWithGoogle}
+          onClick={LoginUserGoogle}
         >
           <svg
             width={19}
@@ -109,9 +101,14 @@ const SingIn = () => {
         <div className="mt-8">
           <button
             className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full"
-            onClick={LogIn}
+            onClick={LoginUser}
           >
             Login
+          </button>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <button className="bg-white" onClick={() => router.push("/")}>
+            <span className="text-gray-400">Go back to Home</span>
           </button>
         </div>
       </div>
