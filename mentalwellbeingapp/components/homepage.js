@@ -1,8 +1,9 @@
 import React from "react";
-import "../styles/homepage.module.css";
+import styles from "../styles/homepage.module.css";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import Wave from "react-wavify";
+import Image from "next/image";
+import titlepic from "../public/titlepic.png";
 
 const Homepage = () => {
   const { currentUser } = useAuth();
@@ -21,6 +22,17 @@ const Homepage = () => {
       img: "",
       title: "hello",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores dolore nisi amet quam! Veniam eum omnis animi placeat, illo fuga neque quaerat nobis molestias. Nam voluptate dolorem unde? Sequi, eum.",
+    },
+  ];
+  const images = [
+    {
+      image: "",
+    },
+    {
+      image: "",
+    },
+    {
+      image: "",
     },
   ];
 
@@ -55,23 +67,41 @@ const Homepage = () => {
   };
 
   return (
-    <div className="bg-violet-200 flex flex-col">
+    <div className="bg-violet-100 flex flex-col">
       <div className="mb-20">
         {/* heading for the project short description */}
-        <div className="w-screen md:h-screen lg:h-screen xl:h-screen bg-indigo-500 flex items-center h-screen">
-          <div className="md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 md:float-left lg:float-left xl:float-left md:justify-start lg:justify-start xl:justify-start justify-center mx-10 mt-10 md:mt-0 lg:mt-0 xl:mt-0 mb-20 md:mb-0 lg:mb-0 xl:mb-0">
-            <p className="text-white text-4xl md:text-5xl lg:text-5xl xl:text-5xl text-center md:text-left lg:text-left xl:text-left">
-              hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-              odit voluptatum, eveniet minus sed dolorem corrupti deleniti unde
-              enim, repellendus architecto quaerat hic reiciendis, quis nihil
-              molestiae! Similique, incidunt consectetur?
+        <div className="w-screen md:mt-20 lg:mt-24 mt-12 bg-violet-100 flex items-center flex-col">
+          {/* <div className="md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 md:float-left lg:float-left xl:float-left md:justify-start lg:justify-start xl:justify-start justify-center mx-10 mt-10 md:mt-0 lg:mt-0 xl:mt-0 mb-20 md:mb-0 lg:mb-0 xl:mb-0"> */}
+          <div className="flex flex-col justify-center align-middle w-screen mx-4">
+            <p className="text-black text-4xl md:text-6xl lg:text-6xl xl:text-6xl text-center font-bold leading-relaxed">
+              The one stop solution for the well-being of your
+            </p>
+            <p className="text-indigo-600 text-4xl md:text-6xl lg:text-6xl xl:text-6xl text-center font-bold leading-9">
+              mental health
             </p>
           </div>
-          <div className="md:w-1/2 lg:w-/2 xl:w-1/2 md:float-right lg:float-right xl:float-right md:justify-end lg:justify-end xl:justify-end md:mx-10 lg:mx-10 xl:mx-10 hidden">
-            {/* svg goes here */}
+          <div className="flex align-middle mt-10 w-screen mx-auto justify-center">
+            <div className="flex w-3/5 float-none">
+            <Image
+              src={titlepic}
+              alt=""
+              className="w-full"
+              priority={true}
+              height="600px"
+              width="600px"
+            />
+            </div>
+            {/* <div className="w-1/5 float-left justify-start">
+            <div className={styles.ball}></div>
+            </div>
+            <div className="w-1/5 float-right justify-end">
+            <div className={styles.ball}></div>
+            </div> */}
+            {/*  */}
           </div>
-          {/* <div className='absolute w-full h-56 bottom-0' id='curve'></div> */}
         </div>
+        {/* <div className='absolute w-full h-56 bottom-0' id='curve'></div> */}
+        {/* </div> */}
         {/* <div className="rotate-180 -mt-12">
           <Wave
             fill="#5c6bc0"
@@ -102,13 +132,16 @@ const Homepage = () => {
         {/* heading and desc ends here */}
         {/* About section starts here */}
         <div>
-          <p className="text-sm flex justify-center mt-10">About</p>
-          <div className="mt-20">
-            <div className="grid gap-x-6 gap-y-10 w-4/5 mx-auto grid-rows-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
+          <p className="text-6xl flex justify-center md:mt-28 mt-12 w-4/5 mx-auto text-center">
+            We provide all solutions for your mental health that are really good
+            and useful. 
+          </p>
+          <div className="mt-24">
+            <div className="grid gap-x-12 gap-y-10 w-4/5 mx-auto grid-rows-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
               {cards.map((items, key) => {
                 return (
                   <div
-                    className="w-full rounded-lg shadow-md bg-white hover:scale-105 transform transition duration-300"
+                    className="w-full rounded-lg bg-violet-100 hover:scale-105 transform transition duration-300"
                     key={key}
                   >
                     <img
@@ -131,7 +164,12 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white w-screen">
+      {/* <div className="flex justify-center mt-20 mx-auto flex-col align-middle">
+        <div className={styles.proton}>
+          <div className={styles.electron}></div>
+        </div>
+      </div> */}
+      <div className="bg-violet-100 w-screen">
         <div className="mt-20">
           <div className="flex md:justify-start lg:justify-start xl:justify-start justify-center mx-10 md:w-1/2 lg:w-1/2 xl:w-1/2 md:float-left lg:float-left xl:float-left border-2 border-indigo-600 p-4 rounded-lg">
             <img src="bgsquare.jpg" alt="" className="h-20 mr-4 rounded-full" />
@@ -153,7 +191,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-indigo-500 w-screen">
+      <div className="bg-indigo-400 w-screen rounded-t-3xl">
         <div className="mt-20 mx-20">
           <div className="md:flex lg:flex xl:flex flex-row md:justify-start lg:justify-start xl:justify-start md:w-2/3 lg:w-2/3 xl:w-2/3 md:float-left lg:float-left xl:float-left hidden md:mb-24 lg:mb-24 xl:mb-24">
             <img src="worldmap2.png" alt="" className="w-4/5" />
