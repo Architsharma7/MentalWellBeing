@@ -194,7 +194,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-indigo-400 w-screen rounded-t-3xl">
+      <div className="bg-indigo-500 w-screen rounded-t-3xl">
         <div className="mt-20 mx-20">
           <div className="md:flex lg:flex xl:flex flex-row md:justify-start lg:justify-start xl:justify-start md:w-2/3 lg:w-2/3 xl:w-2/3 md:float-left lg:float-left xl:float-left hidden md:mb-24 lg:mb-24 xl:mb-24">
             <img src="worldmap2.png" alt="" className="w-4/5" />
@@ -215,7 +215,7 @@ const Homepage = () => {
               />
               <div className="flex justify-center">
                 <button
-                  className="mt-4 bg-blue-500 flex justify-center px-12 py-2 rounded-2xl text-white w-20"
+                  className="mt-4 bg-violet-400 flex justify-center px-12 py-2 rounded-2xl text-white w-20"
                   onClick={callGenerateEndpoint}
                 >
                   {isGenerating ? "Loading..." : "Search"}

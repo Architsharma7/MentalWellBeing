@@ -56,6 +56,9 @@ const quiz = () => {
           <div>
             <button onClick = {() => router.push("/blog")}>blog</button>
           </div>
+          <div>
+            <button onClick = {() => router.push("/writeblog")}>createblog</button>
+          </div>
         </div>
         <div>
           <p>hello</p>

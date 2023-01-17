@@ -1,5 +1,5 @@
 
-export const publicPaths = ["/signIn", "/signUp", "/", "/writeblog"];
+export const publicPaths = ["/signIn", "/signUp", "/","/404"];
 
 
 
