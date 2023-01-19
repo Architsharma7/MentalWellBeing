@@ -2,7 +2,6 @@ import React from "react";
 import { useRouter } from "next/router";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState, useRef, useEffect } from "react";
-import {FaRegUserCircle} from "react-icons/fa";
 
 const Navbar = () => {
   const router = useRouter();
@@ -53,15 +52,16 @@ const Navbar = () => {
             </button>
           ) : (
             <button
-              className="rounded-full inline-flex items-center bg-blue-500 h-10 w-10"
+              className="rounded-full inline-flex items-center bg-indigo-500 h-11 w-11 py-2 z-10 px-3 text-white text-3xl"
               onClick={() => setOpen(!open)}
               ref={buttonRef}
             >
+              {currentUser.displayName[0]}
             {/* <FaRegUserCircle className=""/> */}
               {/* user profile picture fetched from firebase */}
               {open && (
                 <div
-                  className="bg-white py-2 rounded-lg shadow-lg w-48 absolute right-12 top-16 mt-1"
+                  className="bg-white py-2 rounded-lg shadow-lg w-48 absolute right-12 top-16 mt-1 text-base"
                   ref={menuRef}
                 >
                   <ul className="flex justify-center text-black flex-col">
