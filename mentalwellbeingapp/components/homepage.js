@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../styles/homepage.module.css";
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import Image from "next/image";

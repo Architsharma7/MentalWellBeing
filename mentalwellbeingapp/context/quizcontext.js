@@ -1,11 +1,18 @@
 import React from 'react'
+import { useContext, useState, useEffect, useRef, createContext } from "react";
 
-const Quizcontext = () => {
+const AuthContext = createContext();
+
+const QuizContextProvider = () => {
+
+  const value ={
+    
+  }
   return (
-    <div>
-        
-    </div>
+    <AuthContext.Provider value={value}>
+        {children}
+    </AuthContext.Provider>
   )
 }
 
-export default Quizcontext;
+export default QuizContextProvider;
