@@ -17,12 +17,17 @@ const Quiz = () => {
   const auth = getAuth();
   const [currentUser, setCurrentUser] = useState();
   const [page, setPage] = useState(0);
+  
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
     });
   }, [auth]);
+
+  const handleClick = () => [
+    console.log(selectedOption)
+  ];
 
   const router = useRouter();
   const user = auth.currentUser;
@@ -62,8 +67,8 @@ const Quiz = () => {
           quiz below
         </p>
       </div>
-      <div className="w-2/3 flex justify-center h-96 shadow-2xl md:mt-24 mt-16 mx-auto shadow-violet-200 bg-white mb-4">
-        <div className="px-6 py-4">
+      <div className="w-2/3 flex justify-center shadow-2xl md:mt-24 mt-16 mx-auto shadow-violet-200 bg-white mb-4">
+        <div className="px-6 pt-4 pb-6">
           <div className="flex justify-center ">
             <div className={styles.progressbar}>
               <div
@@ -88,25 +93,6 @@ const Quiz = () => {
           </div>
           <div className="md:mt-10 mt-7">
             <PageDisplay />
-            <div className="mt-12 md:mt-20 flex justify-center">
-              <ul className="md:grid md:grid-rows-1 md:grid-cols-5 md:gap-x-20 grid grid-cols-3 gap-x-4 gap-y-4 ">
-                <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
-                  1
-                </li>
-                <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
-                  2
-                </li>
-                <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
-                  3
-                </li>
-                <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
-                  4
-                </li>
-                <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
-                  5
-                </li>
-              </ul>
-            </div>
             <div className="mt-16 md:mt-24 flex justify-between">
               <button
                 className={`bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200 ${page==0 ? "invisible" : "visible"}`}
