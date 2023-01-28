@@ -25,6 +25,9 @@ const Firstques = () => {
                 <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center" value={5}>
                   5
                 </li>
+                {/* <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center" value={5}>
+                  5
+                </li> */}
               </ul>
             </div>
     </div>
