@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import styles from "../styles/progressbar.module.css";
 import Image from "next/image";
 import robotpic from "../public/robot.png";
-import Firstques from "../questions/firstques";
+import Firstques1 from "../questions/firstques1";
 import Secondques from "../questions/secondques";
 import Thirdques from "../questions/thirdques";
 import Fourthques from "../questions/fourthques";
@@ -17,7 +17,15 @@ const Quiz = () => {
   const auth = getAuth();
   const [currentUser, setCurrentUser] = useState();
   const [page, setPage] = useState(0);
-  
+  const [selectedOption, setSelectedOption] = useState({
+    first: "",
+    second: "",
+    third: "",
+    fourth: "",
+    fifth: "",
+    sixth: "",
+    seventh: "",
+  });
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -25,30 +33,91 @@ const Quiz = () => {
     });
   }, [auth]);
 
-  const handleClick = () => [
-    console.log(selectedOption)
-  ];
-
   const router = useRouter();
   const user = auth.currentUser;
 
   const PageDisplay = () => {
     if (page == 0) {
-      return <Firstques />;
+      return (
+        <Firstques1
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else if (page == 1) {
-      return <Secondques />;
+      return (
+        <Secondques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else if (page == 2) {
-      return <Thirdques />;
+      return (
+        <Thirdques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else if (page == 3) {
-      return <Fourthques />;
+      return (
+        <Fourthques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else if (page == 4) {
-      return <Fifthques />;
+      return (
+        <Fifthques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else if (page == 5) {
-      return <Sixthques />;
+      return (
+        <Sixthques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     } else {
-      return <Seventhques />;
+      return (
+        <Seventhques
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
+      );
     }
   };
+
+  const [apiOutput, setApiOutput] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const callGenerateEndpoint = async () => {
+    setIsGenerating(true);
+
+    console.log("Calling OpenAI...");
+    const response = await fetch("/api/quizanswer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ selectedOption }),
+    });
+
+    const data = await response.json();
+    const { output } = data;
+    console.log("OpenAI replied...", output.text);
+
+    setApiOutput(`${output.text}`);
+    setIsGenerating(false);
+    console.log(selectedOption);
+  };
+
+  // const hello = async() => {
+  //   const hello = JSON.stringify({ selectedOption })
+  //   const data = await hello.json();
+  //   console.log(data)
+  // }
 
   return (
     <div className="w-screen flex flex-col justify-center">
@@ -68,51 +137,61 @@ const Quiz = () => {
         </p>
       </div>
       <div className="w-2/3 flex justify-center shadow-2xl md:mt-24 mt-16 mx-auto shadow-violet-200 bg-white mb-4">
-        <div className="px-6 pt-4 pb-6">
-          <div className="flex justify-center ">
-            <div className={styles.progressbar}>
-              <div
-                style={{
-                  width:
-                    page === 0
-                      ? "14.28%"
-                      : page == 1
-                      ? "28.5%"
-                      : page == 2
-                      ? "42.8"
-                      : page == 3
-                      ? "57%"
-                      : page == 4
-                      ? "71.36%"
-                      : page == 5
-                      ? "85.64%"
-                      : "100%",
-                }}
-              ></div>
+        {!apiOutput ? 
+          <div className="px-6 pt-4 pb-6">
+            <div className="flex justify-center ">
+              <div className={styles.progressbar}>
+                <div
+                  style={{
+                    width:
+                      page === 0
+                        ? "14.28%"
+                        : page == 1
+                        ? "28.5%"
+                        : page == 2
+                        ? "42.8"
+                        : page == 3
+                        ? "57%"
+                        : page == 4
+                        ? "71.36%"
+                        : page == 5
+                        ? "85.64%"
+                        : "100%",
+                  }}
+                ></div>
+              </div>
+            </div>
+            <div className="md:mt-10 mt-7">
+              <PageDisplay />
+              <div className="mt-16 md:mt-24 flex justify-between">
+                <button
+                  className={`bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200 ${
+                    page == 0 ? "invisible" : "visible"
+                  }`}
+                  onClick={() => {
+                    setPage((currPage) => currPage - 1);
+                  }}
+                >
+                  prev
+                </button>
+                <button
+                  className="bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200"
+                  onClick={() => {
+                    if (page == 6) {
+                      callGenerateEndpoint();
+                    } else {
+                      setPage((currPage) => currPage + 1);
+                    }
+                  }}
+                >
+                  {page == 6 ? "submit" : "next"}
+                </button>
+              </div>
             </div>
           </div>
-          <div className="md:mt-10 mt-7">
-            <PageDisplay />
-            <div className="mt-16 md:mt-24 flex justify-between">
-              <button
-                className={`bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200 ${page==0 ? "invisible" : "visible"}`}
-                onClick={() => {
-                  setPage((currPage) => currPage - 1);
-                }}
-              >
-                prev
-              </button>
-              <button
-                className="bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200"
-                onClick={() => {
-                  setPage((currPage) => currPage + 1);
-                }}
-              >
-                { page == 6 ? "submit" : "next"}
-              </button>
-            </div>
-          </div>
-        </div>
+          :
+          <div className="px-6 pt-4 pb-6 flex justify-center">{apiOutput}</div>
+        }
       </div>
     </div>
   );

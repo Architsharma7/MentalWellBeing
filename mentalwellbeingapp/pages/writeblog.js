@@ -15,7 +15,7 @@ const Writeblog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [open, setOpen] = useState(false);
-  const [imageUpload, setImageUpload] = useState(null);
+  // const [imageUpload, setImageUpload] = useState(null);
 
 //   const menuRef = useRef();
 //   const buttonRef = useRef();
@@ -31,16 +31,16 @@ const Writeblog = () => {
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
       createdAt : serverTimestamp(),
     });
-    router.push("/blog");
+    router.push("/blogs");
   };
 
-  const addImage = () => {
-    if(imageUpload == null) return;
-    const imageRef = ref(storage, `bannerImage/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then(() => {
-        alert("image uploaded")
-    })
-  }
+  // const addImage = () => {
+  //   if(imageUpload == null) return;
+  //   const imageRef = ref(storage, `bannerImage/${imageUpload.name + v4()}`);
+  //   uploadBytes(imageRef, imageUpload).then(() => {
+  //       alert("image uploaded")
+  //   })
+  // }
 
 
   // useEffect(() => {
@@ -54,7 +54,7 @@ const Writeblog = () => {
   return (
     <div className="w-screen">
       <div className="flex justify-center">
-        <div className="w-3/4 flex mt-20 justify-start">
+        {/* <div className="w-3/4 flex mt-20 justify-start">
           <button
             className="rounded-full items-center"
             onClick={() => setOpen(!open)}
@@ -73,7 +73,7 @@ const Writeblog = () => {
               </ul>
             </span>
           )}
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col justify-center">
         <div className="w-screen justify-center mt-6 flex">
@@ -94,7 +94,7 @@ const Writeblog = () => {
         </div>
       </div>
       <div className="mt-6 flex justify-center mx-auto">
-        <button className="bg-indigo-400 py-2 px-10 rounded-md hover:scale-110 transition duration-150 text-center hover:bg-white hover:border hover:border-indigo-400 text-white hover:text-indigo-400" onClick={() => {createPost(); addImage();}}>
+        <button className="bg-indigo-400 py-2 px-10 rounded-md hover:scale-110 transition duration-150 text-center hover:bg-white hover:border hover:border-indigo-400 text-white hover:text-indigo-400" onClick={() => {createPost()}}>
           Publish
         </button>
       </div>    
