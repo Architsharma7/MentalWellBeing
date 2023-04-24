@@ -9,17 +9,17 @@ const Homepage = () => {
   const { currentUser } = useAuth();
   const cards = [
     {
-      img: '',
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOGOwKKcixa5Qbn-r2SgeauvUJl3xYtAKamg&usqp=CAU",
       title: `Take a quiz`,
-      desc: `Take an AI based quiz that will ask you only 7 easy questions and ananlyze your mental health and will give suggestions to improve it. The AI is based on GPT-3.5 and provide the most accurate results and suggestions `,
+      desc: `Take an AI based quiz that will ask you only 7 easy questions and ananlyze your mental health and will give suggestions to improve it. The AI is based on GPT-3.5 and provide the most accurate results and suggestions. `,
     },
     {
-      img: "",
+      img: "https://static.vecteezy.com/system/resources/previews/005/337/802/original/icon-symbol-chat-outline-illustration-free-vector.jpg",
       title: "Chat with people",
       desc: "Chat with like minded people about your mental health or related issues in a CHAT ROOM according to your choice. Currently we have 7 rooms for different mental health related issues in which people can openly share their experience or advice someone.",
     },
     {
-      img: "",
+      img: "https://as2.ftcdn.net/v2/jpg/02/44/68/97/1000_F_244689725_wCaHdOOJohF5fDtXvhj4Hid1JvZYqwJc.jpg",
       title: "Read and write blogs",
       desc: "Got some experiences you want to share with the world about mental health awareness? Write a blog about it and publish it here. You can also read different blogs on our webapp.",
     },
@@ -147,7 +147,7 @@ const Homepage = () => {
                     key={key}
                   >
                     <img
-                      className="object-cover w-full h-36 mt-6"
+                      className="object-fill w-full h-60 rounded-md mt-6 "
                       alt="just a pic"
                       src={items.img}
                     />

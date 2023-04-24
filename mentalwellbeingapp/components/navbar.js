@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <a href="/" className="flex items-center ml-2 md:ml-0">
           <span className="self-center text-xl font-semibold whitespace-nowrap">
-            Mentalwellbeing
+            Mentwell
           </span>
         </a>
         <div className="flex md:order-2">
