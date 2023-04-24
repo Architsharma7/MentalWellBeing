@@ -6,6 +6,20 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+#you{
+  background-color: darkseagreen;
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  height: auto;
+  /* width: 120px; */
+}
+
+#other{
+  background-color: pink;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

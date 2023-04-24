@@ -34,33 +34,51 @@ const ChatClient = ({ socket, currentUser, room }) => {
 
   return (
     <div>
-      <ScrollToBottom>
-        {messages.map((messageContent) => {
-          return (
-            <div>
-              <p
-                id={
-                  currentUser === messageContent.currentUser ? "you" : "other"
-                }
-              >
-                {messageContent.message}
-              </p>
-              <p id="time">{messageContent.time}</p>
-              <p id="author">{messageContent.currentUser}</p>
-            </div>
-          );
-        })}
-      </ScrollToBottom>
-      <input
-        type="text"
-        value={currentMessage}
-        onChange={(event) => setcurrentMessage(event.target.value)}
-        onKeyPress={(event) => {
-          event.key === "Enter" && sendMessage();
-        }}
-        className="border border-black"
-      ></input>
-      <button onClick={sendMessage}>send</button>
+      <div className="w-screen flex justify-center mx-auto text-xl font-semibold mt-4">
+        <p>{room}</p>
+      </div>
+      <div className="mt-10">
+        <ScrollToBottom>
+          {messages.map((messageContent) => {
+            return (
+              <div className="">
+                <p
+                  id={
+                    currentUser === messageContent.currentUser ? "you" : "other"
+                  }
+                >
+                  {messageContent.message}
+                </p>
+                <p id="time">{messageContent.time}</p>
+                <p id="author">{messageContent.currentUser}</p>
+              </div>
+            );
+          })}
+        </ScrollToBottom>
+        <div className="w-screen">
+          <div
+            className="fixed
+             inset-x-0
+             bottom-0"
+          >
+            <input
+              type="text"
+              value={currentMessage}
+              onChange={(event) => setcurrentMessage(event.target.value)}
+              onKeyPress={(event) => {
+                event.key === "Enter" && sendMessage();
+              }}
+              className="border border-black px-7 py-5 w-11/12"
+            ></input>
+            <button
+              onClick={sendMessage}
+              className="w-1/12 bg-indigo-500 py-6 text-white"
+            >
+              send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
