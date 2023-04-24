@@ -38,7 +38,7 @@ const ChatClient = ({ socket, currentUser, room }) => {
         <p>{room}</p>
       </div>
       <div className="mt-10">
-        <ScrollToBottom>
+        {/* <ScrollToBottom>
           {messages.map((messageContent) => {
             return (
               <div className="">
@@ -54,7 +54,29 @@ const ChatClient = ({ socket, currentUser, room }) => {
               </div>
             );
           })}
+        </ScrollToBottom> */}
+        <div className="chat-body">
+        <ScrollToBottom className="message-container">
+          {messages.map((messageContent) => {
+            return (
+              <div
+                className="message"
+                id={currentUser === messageContent.currentUser ? "you" : "other"}
+              >
+                <div>
+                  <div className="message-content">
+                    <p>{messageContent.message}</p>
+                  </div>
+                  <div className="message-meta">
+                    <p id="time">{messageContent.time}</p>
+                    <p id="author">{messageContent.currentUser}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </ScrollToBottom>
+      </div>
         <div className="w-screen">
           <div
             className="fixed

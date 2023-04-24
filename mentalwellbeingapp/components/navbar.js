@@ -69,7 +69,19 @@ const Navbar = () => {
                       className="px-4 py-2 hover:bg-slate-200 justify-center align-middle"
                       onClick={() => router.push("/quiz")}
                     >
-                      Dashboard
+                      Quiz
+                    </li>
+                    <li
+                      className="px-4 py-2 hover:bg-slate-200 justify-center align-middle"
+                      onClick={() => router.push("/blogs")}
+                    >
+                      Blogs
+                    </li>
+                    <li
+                      className="px-4 py-2 hover:bg-slate-200 justify-center align-middle"
+                      onClick={() => router.push("/chat")}
+                    >
+                      Chat
                     </li>
                     <li
                       className="px-4 py-2 hover:bg-slate-200"

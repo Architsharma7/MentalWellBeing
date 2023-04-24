@@ -3,24 +3,25 @@ import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import Image from "next/image";
 import titlepic from "../public/titlepic.png";
+import quiz from "../public/quiz2.png"
 
 const Homepage = () => {
   const { currentUser } = useAuth();
   const cards = [
     {
-      img: "",
-      title: `hello`,
-      desc: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus laboriosam velit itaque molestiae, distinctio odit adipisci aspernatur dolorem. Sit id dolorum ratione nulla tempora ea nam exercitationem alias repudiandae beatae?`,
+      img: '',
+      title: `Take a quiz`,
+      desc: `Take an AI based quiz that will ask you only 7 easy questions and ananlyze your mental health and will give suggestions to improve it. The AI is based on GPT-3.5 and provide the most accurate results and suggestions `,
     },
     {
       img: "",
-      title: "hello",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel temporibus impedit minima dolores nihil, blanditiis asperiores debitis ad, ratione repudiandae recusandae doloremque nesciunt vitae atque iure. Hic debitis cupiditate atque?",
+      title: "Chat with people",
+      desc: "Chat with like minded people about your mental health or related issues in a CHAT ROOM according to your choice. Currently we have 7 rooms for different mental health related issues in which people can openly share their experience or advice someone.",
     },
     {
       img: "",
-      title: "hello",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores dolore nisi amet quam! Veniam eum omnis animi placeat, illo fuga neque quaerat nobis molestias. Nam voluptate dolorem unde? Sequi, eum.",
+      title: "Read and write blogs",
+      desc: "Got some experiences you want to share with the world about mental health awareness? Write a blog about it and publish it here. You can also read different blogs on our webapp.",
     },
   ];
   const images = [
@@ -79,7 +80,7 @@ const Homepage = () => {
               mental health
             </p>
             <p className="text-gray-900 text-2xl text-center font-normal font-sans leading-relaxed md:mx-16 mx-7 mt-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eius delectus iure impedit veniam eveniet adipisci quos consequatur vero perferendis
+              We provide an innovative AI based solution with a unique p2p chat and blog feature to improve the mental health of a user
             </p>
           </div>
           <div className="flex align-middle mt-10 w-screen mx-auto justify-center">
@@ -135,8 +136,7 @@ const Homepage = () => {
         {/* About section starts here */}
         <div>
           <p className="text-6xl flex justify-center md:mt-28 mt-12 w-4/5 mx-auto text-center">
-            We provide all solutions for your mental health that are really good
-            and useful. 
+            We provide all solutions for your mental health that are potentially the best you can ask for. 
           </p>
           <div className="mt-24">
             <div className="grid gap-x-12 gap-y-10 w-4/5 mx-auto grid-rows-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
@@ -171,7 +171,7 @@ const Homepage = () => {
           <div className={styles.electron}></div>
         </div>
       </div> */}
-      <div className="bg-violet-100 w-screen">
+      {/* <div className="bg-violet-100 w-screen">
         <div className="mt-20">
           <div className="flex md:justify-start lg:justify-start xl:justify-start justify-center mx-10 md:w-1/2 lg:w-1/2 xl:w-1/2 md:float-left lg:float-left xl:float-left border-2 border-indigo-600 p-4 rounded-lg">
             <img src="bgsquare.jpg" alt="" className="h-20 mr-4 rounded-full" />
@@ -192,7 +192,7 @@ const Homepage = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="bg-indigo-500 w-screen rounded-t-3xl">
         <div className="mt-20 mx-20">
           <div className="md:flex lg:flex xl:flex flex-row md:justify-start lg:justify-start xl:justify-start md:w-2/3 lg:w-2/3 xl:w-2/3 md:float-left lg:float-left xl:float-left hidden md:mb-24 lg:mb-24 xl:mb-24">
@@ -201,10 +201,7 @@ const Homepage = () => {
           <div className="flex md:justify-end lg:justify-end xl:justify-end md:w-1/3 lg:w-1/3 xl:w-1/3 md:float-right lg:float-right xl:float-right justify-center flex-row align-middle mb-20">
             <div className="flex flex-col">
               <p className="text-white justify-center md:float-left lg:float-left xl:float-left text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos aperiam aliquam sint nostrum itaque, cumque dolores
-                natus, dolore deserunt repudiandae neque quas. Esse repellendus
-                neque voluptatibus ratione! Sint, deleniti itaque.
+                Got any mental health issue and don't know who to call? Just type in the city or country you live in, we will connect you with the right contact.
               </p>
               <input
                 type="search"

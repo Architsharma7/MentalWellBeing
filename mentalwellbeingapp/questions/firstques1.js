@@ -19,9 +19,9 @@ const Firstques1 = ({selectedOption,setSelectedOption}) => {
                 <li className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">
                   Maybe
                 </li> */}
-                <li onClick={() => setSelectedOption({...selectedOption, first:"yes"})} className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">yes</li>
-                <li onClick={() => setSelectedOption({...selectedOption, first:"no"})} className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">no</li>
-                <li onClick={() => setSelectedOption({...selectedOption, first:"maybe"})} className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center">maybe</li>
+                <li onClick={() => setSelectedOption({...selectedOption, first:"yes"})} className="border border-black px-4 py-2 rounded-md  hover:scale-110 transition  duration-200 cursor-pointer text-black text-center mx-4 focus:text-violet-400">yes</li>
+                <li onClick={() => setSelectedOption({...selectedOption, first:"no"})} className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center mx-4">no</li>
+                <li onClick={() => setSelectedOption({...selectedOption, first:"maybe"})} className="border border-black px-4 py-2 rounded-md hover:bg-violet-400 hover:text-white hover:scale-110 transition duration-200 cursor-pointer text-black text-center mx-4">maybe</li>
               </ul>
             </div>
     </div>

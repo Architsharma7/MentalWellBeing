@@ -6,18 +6,81 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-#you{
+/* #you{
   background-color: darkseagreen;
   display: flex;
   justify-content: flex-end;
   width: auto;
   height: auto;
   /* width: 120px; */
-}
+/* }
 
 #other{
   background-color: pink;
+}  */
+
+.chat-body .message .message-content {
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  max-width: 400px;
+  background-color: rgb(99 102 241);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-right: 9px;
+  padding-left: 9px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
+
+#you {
+  justify-content: flex-start;
+}
+
+#you .message-content {
+  justify-content: flex-start;
+}
+
+#you .message-meta {
+  justify-content: flex-start;
+  margin-left: 25px;
+}
+
+#other {
+  justify-content: flex-end;
+}
+
+#other .message-content {
+  justify-content: flex-end;
+  background-color: rgb(237 233 254);
+  color: black;
+}
+
+#other .message-meta {
+  justify-content: flex-end;
+  margin-right: 25px;
+}
+
+.message-meta #author {
+  margin-left: 25px;
+}
+
+
+.chat-body .message .message-meta {
+  display: flex;
+  font-size: 12px;
+}
+.chat-body .message {
+  height: auto;
+  padding: 10px;
+  display: flex;
+}
+
+
 
 
 @tailwind base;
