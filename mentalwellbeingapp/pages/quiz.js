@@ -12,6 +12,7 @@ import Fourthques from "../questions/fourthques";
 import Fifthques from "../questions/fifthques";
 import Sixthques from "../questions/sixthques";
 import Seventhques from "../questions/seventhques";
+import { Spinner } from '@chakra-ui/react'
 
 const Quiz = () => {
   const auth = getAuth();
@@ -26,6 +27,7 @@ const Quiz = () => {
     sixth: "",
     seventh: "",
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -93,9 +95,10 @@ const Quiz = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const callGenerateEndpoint = async () => {
+    setLoading(true);
     setIsGenerating(true);
-    if(!selectedOption.first) return;
-    
+    if (!selectedOption.first) return;
+
     console.log("Calling OpenAI...");
     const response = await fetch("/api/quizanswer", {
       method: "POST",
@@ -112,11 +115,12 @@ const Quiz = () => {
     setApiOutput(`${output.text}`);
     setIsGenerating(false);
     console.log(selectedOption);
+    setLoading(false)
   };
 
-  const hello = async() => {
-    console.log(selectedOption)
-  }
+  const hello = async () => {
+    console.log(selectedOption);
+  };
 
   return (
     <div className="w-screen flex flex-col justify-center">
@@ -136,61 +140,71 @@ const Quiz = () => {
         </p>
       </div>
       <div className="w-2/3 flex justify-center shadow-2xl md:mt-24 mt-16 mx-auto shadow-violet-200 bg-white mb-4">
-        {!apiOutput ? 
-          <div className="px-6 pt-4 pb-6">
-            <div className="flex justify-center ">
-              <div className={styles.progressbar}>
-                <div
-                  style={{
-                    width:
-                      page === 0
-                        ? "14.28%"
-                        : page == 1
-                        ? "28.5%"
-                        : page == 2
-                        ? "42.8"
-                        : page == 3
-                        ? "57%"
-                        : page == 4
-                        ? "71.36%"
-                        : page == 5
-                        ? "85.64%"
-                        : "100%",
-                  }}
-                ></div>
-              </div>
-            </div>
-            <div className="md:mt-10 mt-7">
-              <PageDisplay />
-              <div className="mt-16 md:mt-24 flex justify-between">
-                <button
-                  className={`bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200 ${
-                    page == 0 ? "invisible" : "visible"
-                  }`}
-                  onClick={() => {
-                    setPage((currPage) => currPage - 1);
-                  }}
-                >
-                  prev
-                </button>
-                <button
-                  className="bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200"
-                  onClick={() => {
-                    if (page == 6) {
-                      callGenerateEndpoint();
-                    } else {
-                      setPage((currPage) => currPage + 1);
-                    }
-                  }}
-                >
-                  {page == 6 ? "submit" : "next"}
-                </button>
-              </div>
-            </div>
+        {loading ? (
+          <div>
+            <Spinner size='xl'/>
           </div>
-          :
-          <div className="px-6 pt-4 pb-6 flex justify-center">{apiOutput}</div>
-        }
+        ) : (
+          <div>
+            {!apiOutput ? (
+              <div className="px-6 pt-4 pb-6">
+                <div className="flex justify-center ">
+                  <div className={styles.progressbar}>
+                    <div
+                      style={{
+                        width:
+                          page === 0
+                            ? "14.28%"
+                            : page == 1
+                            ? "28.5%"
+                            : page == 2
+                            ? "42.8"
+                            : page == 3
+                            ? "57%"
+                            : page == 4
+                            ? "71.36%"
+                            : page == 5
+                            ? "85.64%"
+                            : "100%",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="md:mt-10 mt-7">
+                  <PageDisplay />
+                  <div className="mt-16 md:mt-24 flex justify-between">
+                    <button
+                      className={`bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200 ${
+                        page == 0 ? "invisible" : "visible"
+                      }`}
+                      onClick={() => {
+                        setPage((currPage) => currPage - 1);
+                      }}
+                    >
+                      prev
+                    </button>
+                    <button
+                      className="bg-violet-400 px-7 md:py-2 py-1 rounded-lg text-center text-white hover:scale-110 transition duration-200"
+                      onClick={() => {
+                        if (page == 6) {
+                          callGenerateEndpoint();
+                        } else {
+                          setPage((currPage) => currPage + 1);
+                        }
+                      }}
+                    >
+                      {page == 6 ? "submit" : "next"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="px-6 pt-4 pb-6 flex justify-center">
+                {apiOutput}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
