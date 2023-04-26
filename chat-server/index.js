@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "mentwell.vercel.app/chats",
+    origin: "mentwell.vercel.app/chat",
     methods: ["GET", "POST"],
   },
 });
