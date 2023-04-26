@@ -31,6 +31,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen("https://mentwell.vercel.app/chat", () => {
+server.listen(443, () => {
   console.log("SERVER RUNNING");
 });
