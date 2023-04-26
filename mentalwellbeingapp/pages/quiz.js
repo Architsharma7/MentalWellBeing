@@ -94,7 +94,8 @@ const Quiz = () => {
 
   const callGenerateEndpoint = async () => {
     setIsGenerating(true);
-
+    if(!selectedOption.first) return;
+    
     console.log("Calling OpenAI...");
     const response = await fetch("/api/quizanswer", {
       method: "POST",
@@ -113,11 +114,9 @@ const Quiz = () => {
     console.log(selectedOption);
   };
 
-  // const hello = async() => {
-  //   const hello = JSON.stringify({ selectedOption })
-  //   const data = await hello.json();
-  //   console.log(data)
-  // }
+  const hello = async() => {
+    console.log(selectedOption)
+  }
 
   return (
     <div className="w-screen flex flex-col justify-center">
