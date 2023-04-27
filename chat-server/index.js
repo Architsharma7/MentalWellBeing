@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://mentwell.vercel.app/chat",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -31,6 +31,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(443, () => {
+server.listen(3001, () => {
   console.log("SERVER RUNNING");
 });
